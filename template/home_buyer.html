@@ -1,0 +1,12 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+
+
+welcome, buyer
+<li><a href='{% url 'updatebuyer' %}'>Update</a></li>
+<li><a href='{% url 'viewsellerproducts' %}'>Products</a></li>
+<li><a href='{% url 'ordersofbuyer' %}'>Orders</a></li>
+<li><a href ='{% url 'logout' %}'>Log Out</a></li>
+<li><a href='{% url 'searchbyproduct' %}'>Search Product</a></li>
+<li><a href='{% url 'searchbycategory' %}'>Search By Category</a></li>
+{% endblock %}

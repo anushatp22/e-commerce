@@ -1,0 +1,33 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method = 'post' action="{% url 'categoryaction' %}">
+	{% csrf_token %}
+	<table>
+		<tr>
+		<td>Category</td>
+		<td><input type='text' name='category'></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><input type='submit' value='add'></td>
+		</tr>
+	</table>
+	</form>
+	{% endblock %}
+<html>
+	<body>
+		<form method = 'post' action='{% url 'categoryaction' %}'>
+		{% csrf_token %}
+		<table>
+			<tr>
+			<td>Category</td>
+			<td><input type='text' name='category'></td>
+			</tr>
+			<tr>
+			<td></td>
+			<td><input type='submit' value='add'></td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

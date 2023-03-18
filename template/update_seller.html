@@ -1,0 +1,128 @@
+{% extends 'sellerbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'update_seller_action' %}' enctype='multipart/form-data'>
+	{% csrf_token %}
+<table>
+		{% for i in se %}
+		<tr>
+		<td>Name</td>
+		<td><input type='text' name='name' value='{{i.Name}}'></td>
+		</tr>
+		<tr>
+		<td>Address</td>
+		<td><textarea name='address' cols='19' rows='5'>{{i.Address}}></textarea></td>
+		</tr>
+		<tr>
+		<td>Dob</td>
+		<td><input type='date' name='dob' value='{{i.Dob}}'></td>
+		</tr>
+		<tr>
+		<td>Gender</td>
+		<td>
+		{% if gender == male %}
+		<input type='radio' name='gender' value='male' checked='true'>Male
+		<input type='radio' name='gender' value='female'>Female
+		{% else %}
+		<input type='radio' name='gender' value='male'>Male
+		<input type='radio' name='gender' value='female' checked='true'>Female</td>
+		{% endif %}
+		</tr>
+		<tr>
+		<td>Phone</td>
+		<td><input type='text' value='{{i.Phone}}' name='phone'></td>
+		</tr>
+		<tr>
+		<td>Country</td>
+		<td><select name='country'>
+		<option value='{{i.Country}}'>{{i.Country}}</option>
+		<option value='Italy'>Italy</option>
+		</select>
+		</td>
+		</tr>
+		<tr>
+		<td>Username</td>
+		<td><input type='text' name='username' value='{{i.Username}}'></td>
+		</tr>
+		<tr>
+		<td>Password</td>
+		<td><input type='password' name='password' value='{{i.Password}}'></td>
+		</tr>
+		<tr>
+		<td>Image</td>
+		<td><input type='file' name='image'></td>
+		<td><img src='{{i.Image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><input type='submit' value='update'></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+{% endblock %}
+
+<html>
+	<body>
+	<form method='post' action='{% url 'update_seller_action' %}' enctype='multipart/form-data'>
+	{% csrf_token %}
+<table>
+		{% for i in se %}
+		<tr>
+		<td>Name</td>
+		<td><input type='text' name='name' value='{{i.Name}}'></td>
+		</tr>
+		<tr>
+		<td>Address</td>
+		<td><textarea name='address' cols='19' rows='5'>{{i.Address}}></textarea></td>
+		</tr>
+		<tr>
+		<td>Dob</td>
+		<td><input type='date' name='dob' value='{{i.Dob}}'></td>
+		</tr>
+		<tr>
+		<td>Gender</td>
+		<td>
+		{% if gender == male %}
+		<input type='radio' name='gender' value='male' checked=='true'>Male
+		<input type='radio' name='gender' value='female'>Female
+		{% else %}
+		<input type='radio' name='gender' value='male'>Male
+		<input type='radio' name='gender' value='female' checked='true'>Female</td>
+		{% endif %}
+		</tr>
+		<tr>
+		<td>Phone</td>
+		<td><input type='text' value='{{i.Phone}}' name='phone'></td>
+		</tr>
+		<tr>
+		<td>Country</td>
+		<td><select name='country'>
+		<option value='{{i.Country}}'>{{i.Country}}</option>
+		<option value='Italy'>Italy</option>
+		</select>
+		</td>
+		</tr>
+		<tr>
+		<td>Username</td>
+		<td><input type='text' name='username' value='{{i.Username}}'</td>
+		</tr>
+		<tr>
+		<td>Password</td>
+		<td><input type='password' name='password' value='{{i.Password}}'></td>
+		</tr>
+		<tr>
+		<td>Image</td>
+		<td><input type='file' name='image'></td>
+		<td><img src='{{i.Image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><input type='submit' value='update'></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+	</body>
+</html>
+		
+		

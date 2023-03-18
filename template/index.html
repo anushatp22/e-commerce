@@ -1,0 +1,12 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<li><a href ="{% url 'login' %}">Login</a></li>
+<li><a href = '{% url "register_buyer" %}'>Register Buyer</a></li>
+<li><a href = '{% url "register_seller" %}'>Register Seller</a></li>
+{% endblock %}
+
+<li><a href ='{% url 'login' %}'>Login</a></li>
+<li><a href = '{% url 'register_buyer' %}'>Register Buyer</a></li>
+<li><a href = '{% url 'register_seller' %}'>Register Seller</a></li>
+
+

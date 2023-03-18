@@ -1,0 +1,83 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'placeorderaction' %}'>
+	{% csrf_token %}
+			<table>
+	
+				<tr>
+					<th>Product</th>
+					<th>Shipping Address</th>
+					<th>Quantity</th>
+					<th>Total Price</th>
+					<th>Image</th>
+					<th>Price</th>
+				</tr>
+						{% for c in cart %}
+				<tr>
+					<td>{{c.Productid.product}}</td>
+					<td>{{c.Shipping_address}}</td>
+					<td>{{c.Quantity}}</td>
+					<td>{{c.Total_price}}</td>
+					<td><img src='{{c.Productid.image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+					<td>{{c.Productid.price}}</td>
+					<td><a href='{% url 'deletecart' c.id %}'>Delete</td>
+					<td><input type='checkbox' name='checkbox' value='{{c.id}}'></td>
+				</tr>
+							
+		{% endfor %}
+	<tr>
+				<td><input type='submit' value='Place Order'></td>
+				</tr>	
+			</table>
+	</form>
+		</body>
+	{% if messages %}
+	{% for msg in messages %}
+	<script>
+	alert('{{msg}}')
+	</script>
+	{% endfor %}
+	{% endif %}
+	{% endblock %}
+
+<html>
+	<body>
+<form method='post' action='{% url 'placeorderaction' %}'>
+{% csrf_token %}
+		<table>
+
+			<tr>
+				<th>Product</th>
+				<th>Shipping Address</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
+				<th>Image</th>
+				<th>Price</th>
+			</tr>
+					{% for c in cart %}
+			<tr>
+				<td>{{c.Productid.product}}</td>
+				<td>{{c.Shipping_address}}</td>
+				<td>{{c.Quantity}}</td>
+				<td>{{c.Total_price}}</td>
+				<td><img src='{{c.Productid.image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+				<td>{{c.Productid.price}}</td>
+				<td><a href='{% url 'deletecart' c.id %}'>Delete</td>
+				<td><input type='checkbox' name='checkbox' value='{{c.id}}'></td>
+			</tr>
+						
+	{% endfor %}
+<tr>
+			<td><input type='submit' value='Place Order'></td>
+			</tr>	
+		</table>
+</form>
+	</body>
+{% if messages %}
+{% for msg in messages %}
+<script>
+alert('{{msg}}')
+</script>
+{% endfor %}
+{% endif %}
+</html>

@@ -1,0 +1,53 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'searchbycategoryaction' %}'>
+    {% csrf_token %}
+    <table>
+    <tr>
+    <td>Category</td>
+    <td><select name='category'>
+    <option value = ''>--select--</option>
+    {% for c in cat %}
+    <option value = '{{c.id}}'>{{c.items}}</option>
+    {% endfor %}
+    </select>
+    </td>
+    </tr>
+    <tr>
+    <td>Price</td>
+    <td><input type='text' name='price'></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><input type='submit' value='search'></td>
+    </tr>
+    </table>
+    </form>
+    {% endblock %}
+<html>
+<body>
+<form method='post' action='{% url 'searchbycategoryaction' %}'>
+{% csrf_token %}
+<table>
+<tr>
+<td>Category</td>
+<td><select name='category'>
+<option value = ''>--select--</option>
+{% for c in cat %}
+<option value = '{{c.id}}'>{{c.items}}</option>
+{% endfor %}
+</select>
+</td>
+</tr>
+<tr>
+<td>Price</td>
+<td><input type='text' name='price'></td>
+</tr>
+<tr>
+<td></td>
+<td><input type='submit' value='search'></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,111 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<div class="card">
+	<div class="card-body">
+	  <h5 class="card-title">Orders</h5>
+
+	  <!-- Dark Table -->
+	  <table class="table table-dark">
+		<thead>
+		  <tr>
+			<th scope="col">Seller Name</th>
+			<th scope="col">Image</th>
+			<th scope="col">Shipping Address</th>
+			<th scope="col">Quantity</th>
+			<th scope="col">Phone Number</th>
+			<th scope="col">Total Price</th>
+			<th scope="col">Date</th>
+			<th scope="col">Time</th>
+			<th scope="col">Status</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for o in order %}
+			<tr>
+<td>{{o.sellerid.Name}}
+
+			<td><img src='{{o.productid.image.url}}' width='50 px' height='50 px' alt='no pic'></td>
+
+<td>{{o.shippingaddress}}</td>
+	
+<td>{{o.quantity}}</td>
+
+			<td>{{o.phone}}</td>
+
+			<td>{{o.totalprice}}</td>
+
+			<td>{{o.date}}</td>
+
+			<td>{{o.time}}</td>
+
+			<td>{{o.Status}}</td>
+
+{% if o.Status == 'pending' %}
+<td><a href ='{% url 'cancelorder' o.id %}'>Cancel</td>
+{% endif %}
+{% if o.Status == 'approved' %}
+<td><a href='{% url 'trackingforbuyer' o.id %}'>Tracking</td>
+{% endif %}
+			</tr>
+			{% endfor %}
+			
+		</tbody>
+	  </table>
+	  <!-- End Dark Table -->
+
+	</div>
+  </div>
+  {% endblock %}
+<html>
+	<body>
+		<table>
+			<tr>
+			<th>Seller Name</th>
+<th></th>
+			<th>Image</th>
+<th></th>
+			<th>Shipping Address</th>
+<th></th>
+			<th>Quantity</th>
+<th></th>
+			<th>Phone Number</th>
+<th></th>
+			<th>Total Price</th>
+<th></th>
+			<th>Date</th>
+<th></th>
+			<th>Time</th>
+<th></th>
+			<th>Status</th>
+			</tr>
+			{% for o in order %}
+			<tr>
+<td>{{o.sellerid.Name}}
+<td></td>
+			<td><img src='{{o.productid.image.url}}' width='50 px' height='50 px' alt='no pic'></td>
+<td></td>	
+<td>{{o.shippingaddress}}</td>
+<td></td>		
+<td>{{o.quantity}}</td>
+<td></td>
+			<td>{{o.phone}}</td>
+<td></td>
+			<td>{{o.totalprice}}</td>
+<td></td>
+			<td>{{o.date}}</td>
+<td></td>
+			<td>{{o.time}}</td>
+<td></td>
+			<td>{{o.Status}}</td>
+<td></td>
+{% if o.Status == 'pending' %}
+<td><a href ='{% url 'cancelorder' o.id %}'>Cancel</td>
+{% endif %}
+{% if o.Status == 'approved' %}
+<td><a href='{% url 'trackingforbuyer' o.id %}'>Tracking</td>
+{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

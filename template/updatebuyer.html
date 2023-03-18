@@ -1,0 +1,146 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'updatebuyeraction' %}'>
+	{% csrf_token %}
+	{% for b in buy %}
+<form>
+	<div class="row mb-3">
+	  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+	  <div class="col-sm-10">
+		<input type="text" class="form-control" name='name' value='{{b.Name}}'>
+	  </div>
+	</div>
+	<div class="row mb-3">
+		<label for="inputTextarea" class="col-sm-2 col-form-label">Address</label>
+		<div class="col-sm-10">
+		  <textarea class="form-control" style="height: 100px" name="address">{{b.Address}}</textarea>
+		</div>
+	  </div>
+	  <fieldset class="row mb-3">
+		<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+		<div class="col-sm-10">
+			<tr>
+				{% if b.gender == 'male' %}
+				<td><input type='radio' name='gender' value='male' checked='true'>Male
+				<input type='radio' name='gender' value='female'>Female
+				{% else %}
+				<input type='radio' name='gender' value='male'>Male
+				<input type='radio' name='gender' value='female' checked='true'>Female</td>
+				{% endif %}			
+</tr>
+		</div>
+	  </fieldset>
+	
+	  <div class="row mb-3">
+		<label for="inputDate" class="col-sm-2 col-form-label">DoB</label>
+		<div class="col-sm-10">
+		  <input type="date" class="form-control" name='dob' value='{{b.Dob}}'>
+		</div>
+	  </div>
+	  <div class="row mb-3">
+		<label for="inputNumber" class="col-sm-2 col-form-label">Number</label>
+		<div class="col-sm-10">
+		  <input type="number" class="form-control" name='phone' value='{{b.Phone}}'>
+		</div>
+	  </div>
+	  <div class="row mb-3">
+		<label class="col-sm-2 col-form-label">Country</label>
+		<div class="col-sm-10">
+		  <select class="form-select" aria-label="Default select example" name="country">
+			<option value ='{{b.Country}}'>{{b.Country}}</option>
+			<option value="India">India</option>
+			<option value="Iran">Iran</option>
+			<option value="Bangladesh">Bangladesh</option>
+		  </select>
+		</div>
+	  </div>
+	  <div class="row mb-3">
+		<label for="inputText" class="col-sm-2 col-form-label">Username</label>
+		<div class="col-sm-10">
+		  <input type="username" class="form-control" name='username' value='{{b.Username}}'>
+		</div>
+	  </div>
+	<div class="row mb-3">
+	  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+	  <div class="col-sm-10">
+		<input type="password" class="form-control" name='password' value='{{b.Password}}'>
+	  </div>
+	</div>
+	{% endfor %}
+
+
+	<div class="row mb-3">
+	  <label class="col-sm-2 col-form-label"></label>
+	  <div class="col-sm-10">
+		<button type="submit" class="btn btn-primary" value="update">Update</button>
+	  </div>
+	</div>
+
+  </form>
+  {% endblock %}
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<html>
+	<body>
+<form method='post' action='{% url 'updatebuyeraction' %}'>
+{% csrf_token %}
+		<table>
+			{% for b in buy %}
+			<tr>
+				<td>Name</td>
+				<td><input type='text' name='name' value='{{b.Name}}'></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><textarea name='address' rows='5' cols='19'>{{b.Address}}</textarea></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				{% if gender == male %}
+				<td><input type='radio' name='gender' value='male' checked='true'>Male
+				<input type='radio' name='gender' value='female'>Female
+				{% else %}
+				<input type='radio' name='gender' value='male'>Male
+				<input type='radio' name='gender' value='female' checked='true'>Female</td>
+				{% endif %}			
+</tr>
+			<tr>
+				<td>Dob</td>
+				<td><input type='date' name='dob' value='{{b.Dob}}'></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type='text' name='phone' value='{{b.Phone}}'></td>
+			</tr>
+			<tr>
+				<td>Country</td>
+				<td><select name='country'>
+				<option value ='{{b.Country}}'>{{b.Country}}</option>
+				<option ='italy'>Italy</option>
+				<option ='germany'>Germany</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td><input type='text' name='username' value='{{b.Username}}'></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type='password' name='password' value='{{b.Password}}'></td>
+			</tr>
+{% endfor %}
+			<tr>
+				<td></td>
+				<td><input type='submit' value='update'></td>
+			</tr>
+
+		</table>
+</form>
+	</body>
+</html>

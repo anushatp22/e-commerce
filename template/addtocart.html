@@ -1,0 +1,144 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<div class="card">
+	<div class="card-body">
+	  <h5 class="card-title">Add to Cart</h5>
+	 
+<script src = '/static/jquery-1.8.3.min.js'></script>
+<script>
+	$(document).ready(function(){
+	$('#quantity').change(function(){
+	var quantity=parseInt($('#quantity').val());
+	var price=parseInt($('#price').val());
+	totalprice=price*quantity;
+	$('#totalprice').val(totalprice)
+})
+})
+</script>
+	<body>
+<form method='post' action='{% url "addtocartaction" %}'>
+{% csrf_token %}
+		<table>
+{% for p in pro %}
+			<input type='hidden' id='price' value='{{p.price}}'>
+			<input type='hidden' name='productid' value='{{p.id}}'>
+		<div class="row mb-3">
+		  <label for="inputText" class="col-sm-2 col-form-label">Product</label>
+		  <div class="col-sm-5">
+			<p>{{p.product}}</p>
+		  </div>
+		</div>
+		<div class="row mb-3">
+		  <label for="inputText" class="col-sm-2 col-form-label">Price</label>
+		  <div class="col-sm-5">
+			<p>{{p.price}}</p>
+		  </div>
+		</div>
+		<div class="row mb-3">
+			<label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
+			<div class="col-sm-10">
+				<p><img src='{{p.image.url}}' width='50 px' height='50 px' alt='no pic'></p>
+			</div>
+		  </div>
+		  {% endfor %}
+		<div class="row mb-3">
+		  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+		  <div class="col-sm-10">
+			<input type="text" class="form-control" name='name'>
+		  </div>
+		</div>
+		<div class="row mb-3">
+			<label for="inputTextarea" class="col-sm-2 col-form-label">Shipping Address</label>
+			<div class="col-sm-10">
+			<textarea class='form-control' name="shippingaddress" cols="10" rows="2"></textarea>
+			</div>
+		  </div>
+		<div class="row mb-3">
+		  <label for="inputNumber" class="col-sm-2 col-form-label">Number</label>
+		  <div class="col-sm-10">
+			<input type="number" class="form-control" name='phone'>
+		  </div>
+		</div>
+		<div class="row mb-3">
+			<label for="inputText" class="col-sm-2 col-form-label">Quantity</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" name='quantity' id='quantity'>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="inputText" class="col-sm-2 col-form-label">Total Price</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" name='totalprice' id='totalprice'>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+		  <div class="col-sm-10">
+			<input type="submit" class="btn btn-primary" value="add">
+		  </div>
+		</div>
+	  </form>
+	</div>
+  </div>
+  {% endblock %}	
+
+  <html>
+<script src = '/static/jquery-1.8.3.min.js'></script>
+<script>
+	$(document).ready(function(){
+	$('#quantity').change(function(){
+	var quantity=parseInt($('#quantity').val());
+	var price=parseInt($('#price').val());
+	totalprice=price*quantity;
+	$('#totalprice').val(totalprice)
+})
+})
+</script>
+	<body>
+<form method='post' action="{% url 'addtocartaction' %}">
+{% csrf_token %}
+		<table>
+{% for p in pro %}
+			<input type='hidden' id='price' value='{{p.price}}'>
+			<input type='hidden' name='productid' value='{{p.id}}'>
+			<tr>
+			<td>Product</td>
+			<td>{{p.product}}</td>
+			</tr>
+			<tr>
+			<td>Price</td>
+			<td>{{p.price}}</td>
+			</tr>
+			<tr>
+			<td>Image</td>
+			<td><img src='{{p.image.url}}' width='50 px' height='50 px' alt='no pic'></td>
+			</tr>
+		{% endfor %}
+			<tr>
+			<td>Name</td>
+			<td><input type='text' name='name'></td>
+			</tr>
+			<tr>
+			<td>Shipping Address</td>
+			<td><input type='text' name='shippingaddress'></td>
+			</tr>
+			<tr>
+			<td>Phone</td>
+			<td><input type='text' name='phone'></td>
+			</tr>
+			<tr>
+			<td>Quantity</td>
+			<td><input type='text' name='quantity' id='quantity'></td>
+			</tr>
+			<tr>
+			<td>Total Price</td>
+			<td><input type='text' name='totalprice' id='totalprice'></td>					
+			</tr>
+			<tr>
+			<td></td>
+			<td><input type='submit' value='add'></td>
+			</tr>
+		</table>
+</form>
+	</body>
+</html>

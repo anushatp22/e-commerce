@@ -1,0 +1,90 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<div class="card">
+	<div class="card-body">
+	  <h5 class="card-title">Order of Buyers</h5>
+	 
+	  <!-- Bordered Table -->
+	  <table class="table table-bordered">
+		<thead>
+		  <tr>
+			<th scope="col">Buyer Name</th>
+			<th scope="col">Shipping Address</th>
+			<th scope="col">Quantity</th>
+			<th scope="col">Phone Number</th>
+			<th scope="col">Total Price</th>
+			<th scope="col">Date</th>
+			<th scope="col">Time</th>
+			<th scope="col">Product Id</th>
+			<th scope="col">Status</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for o in order %}
+			<tr>
+				<td>{{o.buyerid.Name}}</td>
+				<td>{{o.shippingaddress}}</td>
+				<td>{{o.quantity}}</td>
+				<td>{{o.phone}}</td>
+				<td>{{o.totalprice}}</td>
+				<td>{{o.date}}</td>
+				<td>{{o.time}}</td>
+				<td>{{o.productid.id}}</td>
+				<td>{{o.Status}}</td>
+				{% if o.Status == 'pending' %}
+<td><a href='{% url 'approveorder' o.id %}'>Approve</td>
+<td><a href='{% url 'rejectorder' o.id %}'>Reject</td>
+{% endif %}
+{% if o.Status == 'approved' %}
+<td><a href = '{% url 'trackingdetails' o.id %}'>Tracking Details</td>
+{% endif %}
+{% if o.Status == 'rejected' %}
+<td><a href ='{% url 'confirmcancel' o.id %}'>Confirm</td>
+{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	  </table>
+	  <!-- End Bordered Table -->
+{% endblock %}
+<html>
+	<body>
+		<table>
+			<tr>
+				<th>Buyer Name</th>
+				<th>Shipping Address</th>
+				<th>Quantity</th>
+				<th>Phone Number</th>
+				<th>Total Price</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Product Id</th>
+				<th>Status</th>
+			</tr>
+			{% for o in order %}
+			<tr>
+				<td>{{o.buyerid.Name}}</td>
+				<td>{{o.shippingaddress}}</td>
+				<td>{{o.quantity}}</td>
+				<td>{{o.phone}}</td>
+				<td>{{o.totalprice}}</td>
+				<td>{{o.date}}</td>
+				<td>{{o.time}}</td>
+				<td>{{o.productid.id}}</td>
+				<td>{{o.Status}}</td>
+{% if o.Status == 'pending' %}
+<td><a href='{% url 'approveorder' o.id %}'>Approve</td>
+<td><a href='{% url 'rejectorder' o.id %}'>Reject</td>
+{% endif %}
+{% if o.Status == 'approved' %}
+<td><a href = '{% url 'trackingdetails' o.id %}'>Tracking Details</td>
+{% endif %}
+{% if o.Status == 'rejected' %}
+<td><a href ='{% url 'confirmcancel' o.id %}'>Confirm</td>
+{% endif %}
+
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'searchbyproductaction' %}'>
+    {% csrf_token %}
+    <table>
+    <input type='hidden' name='pro' value='{{pro}}'>
+    <tr>
+    <td>Search</td>
+    <td><input type=text' name='product'></td>
+    </tr>
+    <tr>
+    <td><input type='submit' value='submit'></td>
+    </tr>
+    </table>
+    </form>
+    {% endblock %}
+<html>
+<body>
+<form method='post' action='{% url 'searchbyproductaction' %}'>
+{% csrf_token %}
+<table>
+<input type='hidden' name='pro' value='{{pro}}'>
+<tr>
+<td>Search</td>
+<td><input type=text' name='product'></td>
+</tr>
+<tr>
+<td><input type='submit' value='submit'></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

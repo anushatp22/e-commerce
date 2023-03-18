@@ -1,0 +1,9 @@
+{% extends 'sellerbase.html' %}
+{% block content %}
+Welcome, seller!
+<li><a href = '{% url 'update_seller' %}'>Update</a></li>
+<li><a href = '{% url 'add_product' %}'>Add Products</a></li>
+<li><a href = '{% url 'viewproduct' %}'>View Products</a></li>
+<li><a href='{% url 'viewbuyerorders' %}'>View Buyer Orders</a></li>
+<li><a href ='{% url 'logout' %}'>Log Out</a></li>
+{% endblock %}

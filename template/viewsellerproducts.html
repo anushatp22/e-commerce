@@ -1,0 +1,97 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<table class="table table-striped">
+	<thead>
+	  <tr>
+		<th scope="col">Product</th>
+		<th scope="col">Price</th>
+		<th scope="col">Image</th>
+		<th scope="col">Details</th>
+		<th scope="col">Stock</th>
+		<th scope="col">Category</th>
+		<th scope="col">Seller Name</th>
+	  </tr>
+	</thead>
+	<tbody>
+		{% for p in pro %}
+		<tr>
+			<td>{{p.product}}</td>
+			<td>{{p.price}}</td>
+			<td><img src ='{{p.image.url}}' height='100 px' width='50 px' alt='no pic'></td>
+			<td>{{p.details}}</td>
+			<td>{{p.stock}}</td>
+			<td>{{p.category.items}}</td>
+			<td>{{p.seller.Name}}</td>
+			<td><a href='{% url 'addtocart' p.id %}'>Add to Cart</td>
+			</tr>
+			
+	{% endfor %}
+	<tr>
+		<td><a href='{% url 'viewcart' %}'>View Cart</td>
+		</tr>
+		</table>
+	  
+	</tbody>
+  </table>
+  {% endblock %}
+ 
+
+<table>
+	<tr>
+	<th>Product</th>
+	<th>Price</th>
+	<th>Image</th>
+	<th>Details</th>
+	<th>Stock</th>
+	<th>Category</th>
+	<th>Seller Name</th>
+	</tr>
+	{% for p in pro %}
+	<tr>
+	<td>{{p.product}}</td>
+	<td>{{p.price}}</td>
+	<td><img src ='{{p.image.url}}' height='100 px' width='50 px' alt='no pic'></td>
+	<td>{{p.details}}</td>
+	<td>{{p.stock}}</td>
+	<td>{{p.category.items}}</td>
+	<td>{{p.seller.Name}}</td>
+	<td><a href='{% url 'addtocart' p.id %}'>Add to Cart</td>
+	</tr>
+
+	{% endfor %}
+<tr>
+<td><a href='{% url 'viewcart' %}'>View Cart</td>
+</tr>
+</table>
+
+<html>
+	<body>
+		<table>
+			<tr>
+			<th>Product</th>
+			<th>Price</th>
+			<th>Image</th>
+			<th>Details</th>
+			<th>Stock</th>
+			<th>Category</th>
+			<th>Seller Name</th>
+			</tr>
+			{% for p in pro %}
+			<tr>
+			<td>{{p.product}}</td>
+			<td>{{p.price}}</td>
+			<td><img src ='{{p.image.url}}' height='100 px' width='50 px' alt='no pic'></td>
+			<td>{{p.details}}</td>
+			<td>{{p.stock}}</td>
+			<td>{{p.category.items}}</td>
+			<td>{{p.seller.Name}}</td>
+			<td><a href='{% url 'addtocart' p.id %}'>Add to Cart</td>
+			</tr>
+
+			{% endfor %}
+<tr>
+<td><a href='{% url 'viewcart' %}'>View Cart</td>
+</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<form method='post' action='{% url 'add_product_action' %}' enctype='multipart/form-data'>
+	{% csrf_token %}
+<div class="card">
+	<div class="card-body">
+	  <h5 class="card-title">Multi Columns Form</h5>
+
+	  <!-- Multi Columns Form -->
+	  <form class="row g-3">
+		<div class="col-md-6">
+		  <label for="inputName5" class="form-label">Product</label>
+		  <input type="text" class="form-control" id="inputName5" name="product">
+		</div>
+		<div class="col-md-6">
+		  <label for="inputPrice5" class="form-label">Price</label>
+		  <input type="text" class="form-control" id="inputPrice5" name='price'>
+		</div>
+		<div class="col-md-6">
+			<label for="inputName5" class="form-label">Details</label>
+			<input type="text" class="form-control" id="inputName5" name='details'>
+		  </div>
+		  <div class="col-md-6">
+			<label for="inputName5" class="form-label">Image</label>
+			<input type="file" class="form-control" id="inputName5" name='image'>
+		  </div>
+		  <div class="col-md-6">
+			<label for="inputName5" class="form-label">Stock</label>
+			<input type="text" class="form-control" id="inputName5" name='stock'>
+		  </div>
+		
+		<div class="col-md-4">
+		  <label for="inputCategory" class="form-label">Category</label>
+		  <select id="inputState" class="form-select" name='category'>
+			<option selected>Choose...</option>
+			{% for c in cat %}
+			<option value='{{c.id}}'>{{c.items}}</option>
+			{% endfor %}
+		  </select>
+		</div>
+		<div class="text-center">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="reset" class="btn btn-secondary">Reset</button>
+		</div>
+	  </form><!-- End Multi Columns Form -->
+
+	</div>
+  </div>
+
+</div>
+{% endblock %}
+<html>
+	<body>
+		<form method='post' action='{% url 'add_product_action' %}' enctype='multipart/form-data'>
+		{% csrf_token %}
+		<table>
+			<tr>
+			<td>Product</td>
+			<td><input type='text' name='product'></td>
+			</tr>
+			<tr>
+			<tr>
+			<td>Price</td>
+			<td><input type='text' name='price'></td>
+			</tr>
+			<tr>
+			<td>Image</td>
+			<td><input type='file' name='image'></td>
+			</tr>
+			<tr>
+			<td>Details</td>
+			<td><input type='text' name='details'></td>
+			</tr>
+			<tr>
+			<td>Stock</td>
+			<td><input type='text' name='stock'></td>
+			</tr>
+			<tr>
+			<td>Category</td>
+			<td><select name='category'>
+			<option value=''>--select--</option>
+			{% for c in cat %}
+			<option value='{{c.id}}'>{{c.items}}</option>
+			{% endfor %}
+			</select>
+			
+			</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td><input type='submit' value='add'></td>
+			</tr>
+		</table>
+	</body>
+</html>
+			

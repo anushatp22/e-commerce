@@ -1,0 +1,66 @@
+<html>
+	<body>
+<form method='post' action='{% url 'editproductsaction' %}' enctype='multipart/form-data'>
+{% csrf_token %}
+		<table>
+		{% for p in pro %}
+			<input type='hidden' name='productid' value='{{p.id}}'>
+			<tr>
+				<td>Product</td>
+				<td><input type='text' name='product' value='{{p.product}}'></td>
+			</tr>
+			<tr>
+				<td>Price</td>
+				<td><input type='text' name='price' value='{{p.price}}'></td>
+			</tr>
+			<tr>
+				<td>Image</td>
+				<td><input type='file' name='image'></td>
+				<td><img src='{{p.image.url}}' height='100 px' width='100 px' alt='no pic></td>
+			</tr>	
+<tr>
+				<td></td>
+				<td></td>
+				
+			</tr>
+<tr>
+				<td>Price</td>
+				<td><input type='text' name='price' value='{{p.price}}'></td>
+			</tr>
+<tr>
+				<td></td>
+				<td></td>
+				
+			</tr>
+
+<tr>
+				<td>details</td>
+				<td><input type='text' name='detail' value='{{p.details}}'></td>
+			</tr>
+
+	
+			<tr>
+				<td>Stock</td>
+				<td><input type='text' name='stock' value='{{p.stock}}'></td>
+			</tr>
+		<tr>
+				<td>Category</td>
+				<td><select name='category'>
+				<option value='{{p.category.id}}'>{{p.category.items}}</option>
+			{% for c in cat %}
+				<option value='{{c.id}}'>{{c.items}}</option>
+			{% endfor %}
+				</select>
+				</td>
+			</tr>
+				<tr>
+				<td></td>
+				<td><input type='submit' value='update'></td>
+				</tr>
+			{% endfor %}
+			</table>
+</form>
+	</body>
+</html>
+
+				

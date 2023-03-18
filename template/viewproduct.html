@@ -1,0 +1,67 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<div class="card">
+	<div class="card-body">
+	  <h5 class="card-title">Product List</h5>
+	  <!-- Table Variants -->
+	  <table class="table">
+		<thead>
+		  <tr>
+			<th scope="col">Product</th>
+			<th scope="col">Price</th>
+			<th scope="col">Image</th>
+			<th scope="col">Details</th>
+			<th scope="col">Stock</th>
+			<th scope="col">Category</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for p in pro %}
+		<tr>
+				<td>{{p.product}}</td>
+				<td>{{p.price}}</td>
+				<td><img src='{{p.image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+				<td>{{p.details}}</td>
+				<td>{{p.stock}}</td>
+				<td>{{p.category.items}}</td>
+				<td><a href='{% url 'editproducts' p.id %}'>Edit</td>
+				<td><a href='{% url 'deleteproduct' p.id %}'>DELETE</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	  </table>
+
+	  <!-- End Table Variants -->
+
+	</div>
+  </div>
+
+</div>
+{% endblock %}
+
+<html>
+	<body>
+		<table>
+			<tr>
+				<th>Product</th>
+				<th>Price</th>
+				<th>Image</th>
+				<th>Details</th>
+				<th>Stock</th>
+				<th>Category</th>
+			</tr>
+			{% for p in pro %}
+			<tr>
+			<td>{{p.product}}</td>
+			<td>{{p.price}}</td>
+			<td><img src='{{p.image.url}}' height='100 px' width='100 px' alt='no pic'></td>
+			<td>{{p.details}}</td>
+			<td>{{p.stock}}</td>
+			<td>{{p.category.items}}</td>
+			<td><a href='{% url 'editproducts' p.id %}'>Edit</td>
+			<td><a href='{% url 'deleteproduct' p.id %}'>DELETE</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
